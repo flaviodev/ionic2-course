@@ -8,15 +8,10 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item>BMW 120i</ion-item>
-    <ion-item>ONIX 1.6</ion-item>
-    <ion-item>Fiesta 2.0</ion-item>
-    <ion-item>C3 1.0</ion-item>        
-    <ion-item>Uno Fire</ion-item>
-    <ion-item>Sentra 2.0</ion-item>
-    <ion-item>Astra Sedan</ion-item>
-    <ion-item>Vectra 2.0 Turbo</ion-item>
-    <ion-item>Hilux 4x4</ion-item>
-    <ion-item>Montana Cabine dupla</ion-item>
-  </ion-list>
+    <ion-item *ngFor="let carro of carros">
+       <h2>{{carro.nome}}</h2>
+       <h3>{{carro.preco}}</h3>
+       <p>Disponível</p>
+     </ion-item>
+   </ion-list>
 </ion-content>
