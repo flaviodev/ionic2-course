@@ -9,4 +9,25 @@
 <ion-content padding>
   <h2>{{ car.nome }}</h2>
   <p>$ {{ totalAmount }}</p>
+
+  <form>
+    <ion-item>
+      <ion-label stacked>Name</ion-label>
+      <ion-input name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Address</ion-label>
+      <ion-input name="address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>e-mail</ion-label>
+      <ion-input name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Date</ion-label>
+      <ion-input name="date"></ion-input>
+    </ion-item>
+    <button ion-button block type="submit">Finish Schedule</button>
+  </form>
+
 </ion-content>
