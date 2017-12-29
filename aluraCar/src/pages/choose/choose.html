@@ -7,5 +7,20 @@
   </ion-header>
   
   <ion-content padding>
-    {{ selectedCar.nome }}
+      <ion-card>
+        <ion-card-content>
+            <ion-item-group>
+                <ion-item-divider color="light">Vehicle</ion-item-divider>
+                <ion-item>{{ selectedCar.nome }}</ion-item>
+                <ion-item>$ {{ selectedCar.preco }}</ion-item>
+            </ion-item-group>
+
+            <ion-item-group>
+                    <ion-item-divider color="light">Accessories</ion-item-divider>
+                    <ion-item>Accessory 1</ion-item>
+                    <ion-item>Accessory 2</ion-item>
+                </ion-item-group>
+        </ion-card-content>
+      </ion-card>
+      <button ion-button block>Advance to scheduling</button>
   </ion-content>

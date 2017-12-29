@@ -38,7 +38,7 @@ export class HomePage implements OnInit {
         this._alertCtrl.create({
           title : "Connection Failure",
           buttons : [{text: "Ok"}],
-          subTitle: "It was not possible get cars list, try again later."
+          subTitle: "Could not get list of cars, please try again later."
         }).present();
       });
   }
