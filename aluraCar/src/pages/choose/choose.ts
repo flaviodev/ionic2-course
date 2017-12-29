@@ -1,5 +1,6 @@
+import { RegistryPage } from './../registry/registry';
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, NavController } from 'ionic-angular';
 
 import { Accessory } from '../../domain/car/accessory';
 import { Car } from './../../domain/car/car';
@@ -18,7 +19,7 @@ export class ChoosePage implements OnInit {
         return this._totalAmount;
     }
 
-    constructor(public navParams:NavParams) {}
+    constructor(public navCtrl: NavController, public navParams:NavParams) {}
 
     ngOnInit() {
         this.selectedCar = this.navParams.get("selectedCar");
@@ -34,5 +35,13 @@ export class ChoosePage implements OnInit {
         on ? 
             this._totalAmount+=accesssory.price :
             this._totalAmount-=accesssory.price;
+    }
+
+    advanceToScheduling() {
+        this.navCtrl.push(RegistryPage, 
+            {
+                car: this.selectedCar, 
+                totalAmount: this._totalAmount
+            });
     }
 }
