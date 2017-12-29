@@ -10,13 +10,19 @@
       <ion-card>
         <ion-card-content>
             <ion-item-group>
-                <ion-item-divider color="light">Vehicle</ion-item-divider>
+                <ion-item-divider color="light">
+                    <ion-icon ios="ios-car" md="md-car" item-left></ion-icon>
+                    Vehicle
+                </ion-item-divider>
                 <ion-item>{{ selectedCar.nome }}</ion-item>
                 <ion-item>$ {{ selectedCar.preco }}</ion-item>
             </ion-item-group>
 
             <ion-item-group>
-                    <ion-item-divider color="light">Accessories</ion-item-divider>
+                    <ion-item-divider color="light">
+                        <ion-icon ios="ios-options" md="md-options" item-left></ion-icon>
+                        Accessories
+                    </ion-item-divider>
                     <ion-item>Accessory 1</ion-item>
                     <ion-item>Accessory 2</ion-item>
                 </ion-item-group>
