@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ChoosePage } from '../pages/choose/choose';
+import { RegistryPage } from '../pages/registry/registry';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -11,7 +12,8 @@ import 'rxjs/add/operator/toPromise';
   declarations: [
     MyApp,
     HomePage,
-    ChoosePage
+    ChoosePage,
+    RegistryPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -20,7 +22,8 @@ import 'rxjs/add/operator/toPromise';
   entryComponents: [
     MyApp,
     HomePage,
-    ChoosePage
+    ChoosePage,
+    RegistryPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
