@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http'
 
 
@@ -14,7 +14,8 @@ export class HomePage {
   constructor(
     public navCtrl: NavController, 
     private _http: Http,
-    private _loadingCtrl: LoadingController) {
+    private _loadingCtrl: LoadingController,
+    private _alertCtrl: AlertController) {
 
     let loader = _loadingCtrl.create({
       content: "Getting new cars. Waiting ..."
@@ -29,6 +30,14 @@ export class HomePage {
       .then(carros => { 
         this.carros = carros;
         loader.dismiss();
-      });
+      },
+    err => { 
+      loader.dismiss();
+      this._alertCtrl.create({
+        title : "Connection Failure",
+        buttons : [{text: "Ok"}],
+        subTitle: "It was not possible get cars list, try again later."
+      }).present();
+    });
   }
 }
