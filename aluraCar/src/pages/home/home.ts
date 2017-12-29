@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http'
 
@@ -7,7 +7,7 @@ import { Http } from '@angular/http'
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   public carros;
 
@@ -15,9 +15,10 @@ export class HomePage {
     public navCtrl: NavController, 
     private _http: Http,
     private _loadingCtrl: LoadingController,
-    private _alertCtrl: AlertController) {
+    private _alertCtrl: AlertController) {}
 
-    let loader = _loadingCtrl.create({
+  ngOnInit() {
+    let loader = this._loadingCtrl.create({
       content: "Getting new cars. Waiting ..."
     });
 
@@ -29,15 +30,14 @@ export class HomePage {
       .toPromise()
       .then(carros => { 
         this.carros = carros;
+        loader.dismiss();})
+      .catch(err => { 
         loader.dismiss();
-      },
-    err => { 
-      loader.dismiss();
-      this._alertCtrl.create({
-        title : "Connection Failure",
-        buttons : [{text: "Ok"}],
-        subTitle: "It was not possible get cars list, try again later."
-      }).present();
-    });
+        this._alertCtrl.create({
+          title : "Connection Failure",
+          buttons : [{text: "Ok"}],
+          subTitle: "It was not possible get cars list, try again later."
+        }).present();
+      });
   }
 }
