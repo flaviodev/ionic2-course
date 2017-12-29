@@ -9,7 +9,7 @@ import { Http } from '@angular/http'
 })
 export class HomePage implements OnInit {
 
-  public carros;
+  public cars;
 
   constructor(
     public navCtrl: NavController, 
@@ -28,8 +28,8 @@ export class HomePage implements OnInit {
       .get('https://aluracar.herokuapp.com')
       .map(res => res.json())
       .toPromise()
-      .then(carros => { 
-        this.carros = carros;
+      .then(cars => { 
+        this.cars = cars;
         loader.dismiss();})
       .catch(err => { 
         loader.dismiss();
@@ -39,5 +39,9 @@ export class HomePage implements OnInit {
           subTitle: "It was not possible get cars list, try again later."
         }).present();
       });
+  }
+
+  select(car) {
+    console.log(car.nome);
   }
 }
