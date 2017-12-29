@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 
+import { Accessory } from '../../domain/car/accessory';
+import { Car } from './../../domain/car/car';
+
 
 @Component({
     templateUrl: 'choose.html'
 })
 export class ChoosePage implements OnInit {
     
-    public selectedCar;
-    public accessories;
+    public selectedCar: Car;
+    public accessories: Accessory[];
     private _totalAmount: number;
 
     get totalAmount(): number {
@@ -27,7 +30,7 @@ export class ChoosePage implements OnInit {
         ];
     }
 
-    updateTotal(on: boolean, accesssory) {
+    updateTotal(on: boolean, accesssory: Accessory) {
         on ? 
             this._totalAmount+=accesssory.price :
             this._totalAmount-=accesssory.price;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http'
 
+import { Car } from './../../domain/car/car';
 import { ChoosePage } from './../choose/choose';
 
 
@@ -11,7 +12,7 @@ import { ChoosePage } from './../choose/choose';
 })
 export class HomePage implements OnInit {
 
-  public cars;
+  public cars: Car[];
 
   constructor(
     public navCtrl: NavController, 
@@ -43,7 +44,7 @@ export class HomePage implements OnInit {
       });
   }
 
-  select(car) {
+  select(car: Car) {
     this.navCtrl.push(ChoosePage, {selectedCar : car});
   }
 }
