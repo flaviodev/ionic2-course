@@ -19,13 +19,21 @@
             </ion-item-group>
 
             <ion-item-group>
-                    <ion-item-divider color="light">
-                        <ion-icon ios="ios-options" md="md-options" item-left></ion-icon>
-                        Accessories
-                    </ion-item-divider>
-                    <ion-item>Accessory 1</ion-item>
-                    <ion-item>Accessory 2</ion-item>
-                </ion-item-group>
+                <ion-item-divider color="light">
+                    <ion-icon ios="ios-options" md="md-options" item-left></ion-icon>
+                    Accessories
+                </ion-item-divider>
+                <ion-item *ngFor="let accessory of accessories"> 
+                    <ion-label>
+                        <h2>{{ accessory.name }}</h2>
+                        <h3>${{ accessory.price }}</h3>
+                    </ion-label>
+                    <ion-toggle #toggle color="secondary" (ionChange)="updateTotal(toggle.checked,accessory)"></ion-toggle>
+                </ion-item>
+            </ion-item-group>
+            <ion-item-divider color="light">
+                Total: $ {{ totalAmount }}
+            </ion-item-divider>
         </ion-card-content>
       </ion-card>
       <button ion-button block>Advance to scheduling</button>
