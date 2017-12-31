@@ -16,4 +16,11 @@ export class SchedulingDao{
         return this._storage.set(this._getKey(scheduling), scheduling);
     }
 
+    isDuplicatedScheduling(scheduling: Scheduling) {
+        return this._storage.get(this._getKey(scheduling))
+        .then(data => {
+            return data ? true : false;
+        })
+    }
+
 }

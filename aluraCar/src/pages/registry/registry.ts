@@ -50,6 +50,11 @@ export class RegistryPage implements OnInit {
           this.alert.setSubTitle("Successful scheduling") :
           this.alert.setSubTitle("Failure scheduling");
         this.alert.present();      
+      })
+      .catch(err => {
+        console.log(err);
+        this.alert.setSubTitle(err.message);
+        this.alert.present();      
       });
   }
 }

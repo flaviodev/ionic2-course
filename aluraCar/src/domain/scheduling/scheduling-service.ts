@@ -22,11 +22,15 @@ export class SchedulingService{
         +"&dataAgendamento="+
         scheduling.date;
 
-        return this._http
-            .get(api)
-            .toPromise()
-            .then(() => scheduling.confirmed = true, err => console.log(err))
-            .then(() => this._dao.save(scheduling))
-            .then(() => scheduling.confirmed);
+        return this._dao.isDuplicatedScheduling(scheduling)
+            .then(exists => {
+                if(exists) throw new Error('Scheduling has already been');
+                return this._http
+                    .get(api)
+                    .toPromise()
+                    .then(() => scheduling.confirmed = true, err => console.log(err))
+                    .then(() => this._dao.save(scheduling))
+                    .then(() => scheduling.confirmed);
+            })
     }
 }
