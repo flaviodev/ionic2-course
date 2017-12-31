@@ -13,21 +13,21 @@
   <form (ngSubmit)="toSchedule()">
     <ion-item>
       <ion-label stacked>Name</ion-label>
-      <ion-input [(ngModel)]="schedule.name" name="name"></ion-input>
+      <ion-input [(ngModel)]="scheduling.name" name="name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Address</ion-label>
-      <ion-input [(ngModel)]="schedule.address" name="address"></ion-input>
+      <ion-input [(ngModel)]="scheduling.address" name="address"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>e-mail</ion-label>
-      <ion-input [(ngModel)]="schedule.email" name="email"></ion-input>
+      <ion-input [(ngModel)]="scheduling.email" name="email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Date</ion-label>
-      <ion-datetime [(ngModel)]="schedule.date" name="date" displayFormat="MM/DD/YY"></ion-datetime>
+      <ion-datetime [(ngModel)]="scheduling.date" name="date" displayFormat="MM/DD/YY"></ion-datetime>
     </ion-item>
-    <button ion-button block type="submit">Finish Schedule</button>
+    <button ion-button block type="submit">Finish scheduling</button>
   </form>
 
 </ion-content>

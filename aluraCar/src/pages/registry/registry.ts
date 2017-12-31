@@ -1,8 +1,11 @@
+import { SchedulingService } from './../../domain/scheduling/scheduling-service';
+import { HomePage } from './../home/home';
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { Car } from './../../domain/car/car';
+import { Alert } from 'ionic-angular/components/alert/alert';
+import { Scheduling } from '../../domain/scheduling/scheduling';
 
 @Component({
   templateUrl: 'registry.html'
@@ -12,17 +15,27 @@ export class RegistryPage implements OnInit {
   public car: Car;
   private totalAmount: number;
 
-  private schedule;
+  private scheduling: Scheduling;
+  private alert: Alert;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private _http: Http) {}
+    private _service: SchedulingService,
+    private _alertCtrl: AlertController) {}
 
   ngOnInit() {
     this.car = this.navParams.get("car");
     this.totalAmount = this.navParams.get("totalAmount");
-    this.schedule = {date: new Date().toISOString()};
+    this.scheduling = new Scheduling();
+    this.scheduling.car = this.car;
+    this.scheduling.totalAmount = this.totalAmount;
+    this.scheduling.date = new Date().toISOString();
+
+    this.alert = this._alertCtrl.create({
+      title: "Warning",
+      buttons: [{ text: "Ok", handler: () => this.navCtrl.setRoot(HomePage)}]
+    });
   }
 
   // just firs time
@@ -31,22 +44,12 @@ export class RegistryPage implements OnInit {
   }
 
   toSchedule() {
-    let api = "https://aluracar.herokuapp.com/salvarpedido?carro="+
-              this.car.nome
-              +"&nome="+
-              this.schedule.name
-              +"&preco="+
-              this.totalAmount
-              +"&endereco="+
-              this.schedule.address
-              +"&email="+
-              this.schedule.email
-              +"&dataAgendamento="+
-              this.schedule.date;
-    this._http
-    .get(api)
-    .toPromise()
-    .then(() => alert('sucesso'))
-    .catch(err => alert(err));
+    this._service.schedule(this.scheduling)
+      .then((confirmed) => {
+        confirmed ?
+          this.alert.setSubTitle("Successful scheduling") :
+          this.alert.setSubTitle("Failure scheduling");
+        this.alert.present();      
+      });
   }
 }
