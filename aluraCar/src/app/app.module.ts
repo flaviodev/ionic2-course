@@ -1,4 +1,3 @@
-import { SchedulingDao } from './../domain/scheduling/scheduling-dao';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -6,6 +5,8 @@ import { SchedulingService } from './../domain/scheduling/scheduling-service';
 import { HomePage } from '../pages/home/home';
 import { ChoosePage } from '../pages/choose/choose';
 import { RegistryPage } from '../pages/registry/registry';
+import { SchedulingDao } from './../domain/scheduling/scheduling-dao';
+import { SchedulingPage } from './../pages/scheduling/scheduling';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
@@ -22,7 +23,8 @@ function provideStorage() {
     MyApp,
     HomePage,
     ChoosePage,
-    RegistryPage
+    RegistryPage,
+    SchedulingPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,7 +34,8 @@ function provideStorage() {
     MyApp,
     HomePage,
     ChoosePage,
-    RegistryPage
+    RegistryPage,
+    SchedulingPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

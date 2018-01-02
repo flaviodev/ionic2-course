@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from "@ionic/storage";
 
+import { Car } from './../car/car';
 import { Scheduling } from './scheduling';
 
 @Injectable()
@@ -22,5 +23,26 @@ export class SchedulingDao{
             return data ? true : false;
         })
     }
+
+    listAll() {
+        let schedulings = [];
+        return this._storage.forEach(data => {
+            let car: Car = new Car(data.car.nome, data.car.preco);
+            let scheduling: Scheduling = new Scheduling(
+                car,
+                data.totalAmount,
+                data.name,
+                data.address,
+                data.email,
+                data.date,
+                data.confirmed
+            );
+
+            schedulings.push(scheduling);
+        })
+        .then(()=> schedulings);
+
+    }
+
 
 }
