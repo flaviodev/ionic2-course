@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let scheduling of schedulings">
+    <ion-item [class.failure]="!scheduling.confirmed" *ngFor="let scheduling of schedulings">
        <h2>{{scheduling.car.nome}} - {{scheduling.name}}</h2>
      </ion-item>
    </ion-list>
