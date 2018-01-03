@@ -7,6 +7,7 @@ import { ChoosePage } from '../pages/choose/choose';
 import { RegistryPage } from '../pages/registry/registry';
 import { SchedulingDao } from './../domain/scheduling/scheduling-dao';
 import { SchedulingPage } from './../pages/scheduling/scheduling';
+import { LoginPage } from './../pages/login/login';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
@@ -24,7 +25,8 @@ function provideStorage() {
     HomePage,
     ChoosePage,
     RegistryPage,
-    SchedulingPage
+    SchedulingPage,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -35,7 +37,8 @@ function provideStorage() {
     HomePage,
     ChoosePage,
     RegistryPage,
-    SchedulingPage
+    SchedulingPage,
+    LoginPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

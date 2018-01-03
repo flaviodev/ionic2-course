@@ -1,0 +1,24 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Welcome Alura-Car!</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+   <form (ngSubmit)="login()">
+      <ion-item>
+          <ion-label stacked>e-mail</ion-label>
+          <ion-input [(ngModel)]="email" name="email" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+          <ion-label stacked>Password</ion-label>
+          <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
+      </ion-item>
+  
+      <button ion-button block type="submit">log in</button>
+    </form>
+  
+  </ion-content>

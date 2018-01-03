@@ -3,14 +3,13 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { SchedulingPage } from './../pages/scheduling/scheduling';
 
-import { HomePage } from '../pages/home/home';
-
+import { LoginPage } from './../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = HomePage;
+  rootPage = LoginPage;
 
   public pages = [
     { title: "Schedulings", component: SchedulingPage }
