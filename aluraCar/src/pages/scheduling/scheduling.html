@@ -9,9 +9,16 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item [class.failure]="!scheduling.confirmed" *ngFor="let scheduling of schedulings">
-       <h2>{{scheduling.car.nome}} - {{scheduling.name}}</h2>
-     </ion-item>
+    <ion-item-sliding *ngFor="let scheduling of schedulings">
+      <ion-item [class.failure]="!scheduling.confirmed">
+        <h2>{{scheduling.car.nome}} - {{scheduling.name}}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button 
+          *ngIf="!scheduling.confirmed"
+          (click)="resend(scheduling)">Resend</button>
+      </ion-item-options>
+    </ion-item-sliding>
    </ion-list>
 
 </ion-content>

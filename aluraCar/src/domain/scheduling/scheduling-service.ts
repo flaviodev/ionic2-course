@@ -8,8 +8,8 @@ export class SchedulingService{
 
     constructor(private _http: Http, private _dao: SchedulingDao) {}
 
-    schedule(scheduling: Scheduling) {
-        let api = "https://aluracar.herokuapp.com/salvarpedido?carro="+
+    private buildUri(scheduling: Scheduling) {
+        return "https://aluracar.herokuapp.com/salvarpedido?carro="+
         scheduling.car.nome
         +"&nome="+
         scheduling.name
@@ -21,6 +21,10 @@ export class SchedulingService{
         scheduling.email
         +"&dataAgendamento="+
         scheduling.date;
+    }
+
+    schedule(scheduling: Scheduling) {
+        let api = this.buildUri(scheduling);
 
         return this._dao.isDuplicatedScheduling(scheduling)
             .then(exists => {
@@ -32,5 +36,16 @@ export class SchedulingService{
                     .then(() => this._dao.save(scheduling))
                     .then(() => scheduling.confirmed);
             })
+    }
+
+    reschedule(scheduling: Scheduling) {
+        let api = this.buildUri(scheduling);
+
+        return this._http
+            .get(api)
+            .toPromise()
+            .then(() => scheduling.confirmed = true, err => console.log(err))
+            .then(() => this._dao.save(scheduling))
+            .then(() => scheduling.confirmed);
     }
 }
