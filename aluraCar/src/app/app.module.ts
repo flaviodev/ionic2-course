@@ -11,6 +11,8 @@ import { LoginPage } from './../pages/login/login';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
+import { UserService } from './../domain/user/user-service';
+import { ProfilePage } from '../pages/profile/profile';
 
 function provideStorage() {
   return new Storage(['indexeddb'],{
@@ -26,7 +28,8 @@ function provideStorage() {
     ChoosePage,
     RegistryPage,
     SchedulingPage,
-    LoginPage
+    LoginPage, 
+    ProfilePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -38,13 +41,15 @@ function provideStorage() {
     ChoosePage,
     RegistryPage,
     SchedulingPage,
-    LoginPage
+    LoginPage,
+    ProfilePage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SchedulingService, 
     {provide: Storage, useFactory: provideStorage},
-    SchedulingDao
+    SchedulingDao, 
+    UserService
   ]
 })
 

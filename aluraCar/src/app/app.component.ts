@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { SchedulingPage } from './../pages/scheduling/scheduling';
 
 import { LoginPage } from './../pages/login/login';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +13,8 @@ export class MyApp {
   rootPage = LoginPage;
 
   public pages = [
-    { title: "Schedulings", component: SchedulingPage }
+    { title: "Schedulings", component: SchedulingPage },
+    { title: "Profile", component: ProfilePage }
   ];
 
   @ViewChild(Nav) public nav: Nav;
