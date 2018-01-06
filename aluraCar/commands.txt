@@ -1,0 +1,13 @@
+
+//linceses  for build android
+# /opt/android/tools/bin/sdkmanager --licenses
+
+// build android
+# ionic build android
+
+// plugin vibration
+# ionic plugin add cordova-plugin-vibration@2.1
+
+// plugin camara
+# ionic plugin add cordova-plugin-camera@2.3
+

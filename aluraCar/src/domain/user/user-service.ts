@@ -2,6 +2,8 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { User } from './user';
 
+const KEY = "avatarUrl";
+
 @Injectable()
 export class UserService {
     
@@ -26,4 +28,13 @@ export class UserService {
         return this._principal;
     }
 
+
+    saveAvatar(url) {
+        localStorage.setItem(KEY, url);
+    }
+
+    getAvatar() {
+
+        return localStorage.getItem(KEY);
+    }
 }
