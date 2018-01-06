@@ -6,7 +6,7 @@ import { Car } from './../../domain/car/car';
 import { Alert } from 'ionic-angular/components/alert/alert';
 import { Scheduling } from '../../domain/scheduling/scheduling';
 import { SchedulingService } from './../../domain/scheduling/scheduling-service';
-import { Vibration } from 'ionic-native';
+import { Vibration, DatePicker } from 'ionic-native';
 
 @Component({
   templateUrl: 'registry.html'
@@ -71,5 +71,15 @@ export class RegistryPage implements OnInit {
         this.alert.setSubTitle(err.message);
         this.alert.present();      
       });
+  }
+
+  selectDate() {
+
+    DatePicker.show({
+      date: new Date(), 
+      mode: 'date'
+    })
+    .then(data => this.scheduling.date = data.toISOString());
+
   }
 }

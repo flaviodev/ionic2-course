@@ -1,5 +1,5 @@
 
-//linceses  for build android
+// linceses  for build android
 # /opt/android/tools/bin/sdkmanager --licenses
 
 // build android
@@ -11,3 +11,5 @@
 // plugin camara
 # ionic plugin add cordova-plugin-camera@2.3
 
+// plugin date picker
+# ionic plugin add cordova-plugin-datepicker@0.9

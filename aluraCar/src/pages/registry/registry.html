@@ -23,9 +23,9 @@
       <ion-label stacked>e-mail</ion-label>
       <ion-input [(ngModel)]="scheduling.email" name="email"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item (click)="selectDate()">
       <ion-label stacked>Date</ion-label>
-      <ion-datetime [(ngModel)]="scheduling.date" name="date" displayFormat="MM/DD/YY"></ion-datetime>
+      <ion-datetime disabled="true" [(ngModel)]="scheduling.date" name="date" displayFormat="MM/DD/YY"></ion-datetime>
     </ion-item>
     <button ion-button block type="submit">Finish scheduling</button>
   </form>
