@@ -1,4 +1,3 @@
-import { SchedulingService } from './../../domain/scheduling/scheduling-service';
 import { HomePage } from './../home/home';
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
@@ -6,6 +5,8 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Car } from './../../domain/car/car';
 import { Alert } from 'ionic-angular/components/alert/alert';
 import { Scheduling } from '../../domain/scheduling/scheduling';
+import { SchedulingService } from './../../domain/scheduling/scheduling-service';
+import { Vibration } from 'ionic-native';
 
 @Component({
   templateUrl: 'registry.html'
@@ -44,6 +45,20 @@ export class RegistryPage implements OnInit {
   }
 
   toSchedule() {
+
+    if(!this.scheduling.name || !this.scheduling.address || !this.scheduling.email) {
+
+      Vibration.vibrate(500);
+
+      this._alertCtrl.create({
+        title: 'Preenchimento obrigatório',
+        subTitle: 'Você deve preencher todas as informações',
+        buttons: [{ text: 'Ok'}]
+      }).present();
+
+      return;
+    }
+
     this._service.schedule(this.scheduling)
       .then((confirmed) => {
         confirmed ?
