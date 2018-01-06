@@ -51,8 +51,8 @@ export class RegistryPage implements OnInit {
       Vibration.vibrate(500);
 
       this._alertCtrl.create({
-        title: 'Preenchimento obrigatório',
-        subTitle: 'Você deve preencher todas as informações',
+        title: 'Required field',
+        subTitle: 'You must complete all the information',
         buttons: [{ text: 'Ok'}]
       }).present();
 
