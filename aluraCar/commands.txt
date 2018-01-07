@@ -1,9 +1,9 @@
 
 // linceses  for build android
-# /opt/android/tools/bin/sdkmanager --licenses
+# /opt/android/tools/bin/sdkmanager --update
 
 // build android
-# ionic build android
+# 
 
 // plugin vibration
 # ionic plugin add cordova-plugin-vibration@2.1
@@ -13,3 +13,23 @@
 
 // plugin date picker
 # ionic plugin add cordova-plugin-datepicker@0.9
+
+// build 
+
+ionic platform rm android
+
+ionic platform add android@6.1.2
+
+yes | /opt/android/tools/bin/sdkmanager --update
+
+cp -R templates /opt/android/tools/
+
+chmod -R 777 /opt/android/tools/templates
+
+ionic build android
+
+
+
+
+
+
