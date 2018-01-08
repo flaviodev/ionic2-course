@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { SchedulingDao } from '../../domain/scheduling/scheduling-dao';
 import { Scheduling } from '../../domain/scheduling/scheduling';
 import { SchedulingService } from './../../domain/scheduling/scheduling-service';
-import { AlertController } from 'ionic-angular/components/alert/alert';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-scheduling',

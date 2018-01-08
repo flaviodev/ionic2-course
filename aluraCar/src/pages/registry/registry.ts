@@ -6,7 +6,9 @@ import { Car } from './../../domain/car/car';
 import { Alert } from 'ionic-angular/components/alert/alert';
 import { Scheduling } from '../../domain/scheduling/scheduling';
 import { SchedulingService } from './../../domain/scheduling/scheduling-service';
-import { Vibration, DatePicker } from 'ionic-native';
+import { Vibration } from '@ionic-native/vibration'; 
+import { DatePicker } from '@ionic-native/date-picker'; 
+
 
 @Component({
   templateUrl: 'registry.html'
@@ -23,7 +25,9 @@ export class RegistryPage implements OnInit {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private _service: SchedulingService,
-    private _alertCtrl: AlertController) {}
+    private _alertCtrl: AlertController, 
+    public vibration: Vibration,
+    public datePicker: DatePicker) {}
 
   ngOnInit() {
     this.car = this.navParams.get("car");
@@ -35,7 +39,7 @@ export class RegistryPage implements OnInit {
 
     this.alert = this._alertCtrl.create({
       title: "Warning",
-      buttons: [{ text: "Ok", handler: () => this.navCtrl.setRoot(HomePage)}]
+      buttons: [{ text: "Ok", handler: () => {this.navCtrl.setRoot(HomePage)}}]
     });
   }
 
@@ -48,7 +52,7 @@ export class RegistryPage implements OnInit {
 
     if(!this.scheduling.name || !this.scheduling.address || !this.scheduling.email) {
 
-      Vibration.vibrate(500);
+      this.vibration.vibrate(500);
 
       this._alertCtrl.create({
         title: 'Required field',
@@ -75,7 +79,7 @@ export class RegistryPage implements OnInit {
 
   selectDate() {
 
-    DatePicker.show({
+    this.datePicker.show({
       date: new Date(), 
       mode: 'date'
     })

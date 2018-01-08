@@ -2,7 +2,7 @@ import { UserService } from './../../domain/user/user-service';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular/components/alert/alert';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-login',
